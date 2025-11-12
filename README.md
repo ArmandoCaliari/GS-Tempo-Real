@@ -1,46 +1,4 @@
 # GS-Tempo-Real
-Faculdade de Informática e Administração Paulista
-
-Nome: Armando Caliari Silva			RM: 86765
-Nome: Leandro Serrano Borloni 		RM: 86867
-Nome: Henrique Montone Casagrande	RM:86932
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Global Solution
-SISTEMAS DE TEMPO REAL
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Explicação da Implementação
 O projeto desenvolvido tem como objetivo monitorar, em tempo real, a rede Wi-Fi à qual o dispositivo está conectado, verificando se ela pertence a uma lista de redes seguras previamente cadastradas. Caso o dispositivo se conecte a uma rede não autorizada, o sistema gera um alerta visual (LED) e um registro no log serial.
@@ -93,20 +51,3 @@ Timeout na fila:
 
 Estratégia de recuperação (Watchdog simulado):
 Se três timeouts consecutivos forem detectados, o sistema entende que há uma falha grave e reinicia automaticamente o ESP32 usando esp_restart(). Essa é uma forma simples de implementar uma recuperação automática em caso de travamento.
-Link do github:
-Prints da simulação:
-Situação 1 — Rede Não Confiável (LED Vermelho)
-Em outra etapa da simulação, o sistema detectou um SSID que não consta na lista de redes seguras. Como resposta, o monitor serial exibiu uma mensagem de alerta semelhante a:
-[50500 ms] ⚠️ ALERTA: REDE NAO AUTORIZADA -> RedeSecgura
-[Scanner] SSID simulado: RedeSecgura
-Nessa situação, o LED vermelho foi acionado, piscando para sinalizar o risco. Esse comportamento representa uma condição de segurança comprometida, onde a rede detectada não é reconhecida como autorizada pelo sistema. O alerta serve para notificar o usuário e permitir que medidas preventivas sejam tomadas, como o bloqueio de conexão ou a revisão das redes disponíveis.
-
-
-
-
-Situação 2 — Rede Confiável (LED Verde)
-Na simulação apresentada, o sistema identificou a rede “Office_WiFi” como pertencente à lista de redes seguras. Isso pode ser observado na mensagem do monitor serial:
-[49350 ms] [OK] Rede permitida: Office_WiFi
-[Scanner] SSID simulado: Office_WiFi
-Nesse momento, o LED verde foi acionado, indicando que o dispositivo está conectado a uma rede confiável e autorizada. Essa resposta visual confirma que o ambiente de comunicação é seguro, garantindo que a troca de dados ocorra dentro dos parâmetros esperados. Assim, o sistema reconhece que não há risco associado à rede atual, mantendo seu funcionamento normal.
-
